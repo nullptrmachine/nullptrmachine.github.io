@@ -1,8 +1,195 @@
-<!DOCTYPE html>
+
 <html>
-<body>
+    <head>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
 
-<h1>My First Heading</h1>
+var style = document.createElement('style');
+style.innerHTML = '* { font-family: sans-serif; }';
+document.head.appendChild(style);
 
-</body>
+document.body.style.backgroundColor = '#000';
+
+var style = document.createElement('style');
+style.innerHTML = 'input, button, textarea, select, option, optgroup, fieldset, legend, button, meter, progress { background-color: #000; color: #fff; border: 1px solid #000; }';
+document.head.appendChild(style);
+
+var searchBar = document.createElement('input');
+searchBar.type = 'text';
+searchBar.placeholder = 'Search';
+searchBar.style.width = '100%';
+searchBar.style.height = '50px';
+searchBar.style.fontSize = '30px';
+searchBar.style.padding = '10px';
+searchBar.style.margin = '0px';
+document.body.appendChild(searchBar);
+
+searchBar.style.width = '100%';
+
+searchBar.style.width = '60%';
+
+searchBar.style.textAlign = 'center';
+
+searchBar.style.backgroundColor = '#000';
+
+searchBar.style.border = '1px solid #f00';
+searchBar.style.boxShadow = '0 0 10px #f00';
+
+var periodicTable = [
+  {
+    name: 'Hydrogen',
+    symbol: 'H',
+    atomicNumber: 1,
+    atomicMass: 1.008,
+    group: 1,
+    period: 1,
+    block: 's',
+    state: 'gas'
+  },
+  { 
+    name: 'Helium', 
+    symbol: 'He',
+    atomicNumber: 2,
+    atomicMass: 4.003,
+    group: 18,
+    period: 1,
+    block: 's',
+    state: 'gas'
+  }
+];
+
+searchBar.addEventListener('input', function() {
+  var suggestions = [];
+  for (var i = 0; i < periodicTable.length; i++) {
+    if (periodicTable[i].name.toLowerCase().indexOf(searchBar.value.toLowerCase()) === 0) {
+      suggestions.push(periodicTable[i].name);
+    }
+  }
+  searchBar.setAttribute('list', 'suggestions');
+  var suggestionsList = document.createElement('datalist');
+  suggestionsList.id = 'suggestions';
+  for (var i = 0; i < suggestions.length; i++) {
+    var suggestion = document.createElement('option');
+    suggestion.value = suggestions[i];
+    suggestionsList.appendChild(suggestion);
+  }
+  document.body.appendChild(suggestionsList);
+});
+
+var elementTemplate = {
+  name: '',
+  symbol: '',
+  atomicNumber: 0,
+  atomicMass: 0,
+  group: 0,
+  period: 0,
+  block: '',
+  state: ''
+};
+
+searchBar.addEventListener('input', function() {
+  for (var i = 0; i < periodicTable.length; i++) {
+    if (periodicTable[i].name.toLowerCase() === searchBar.value.toLowerCase()) {
+      elementTemplate = periodicTable[i];
+    }
+  }
+});
+
+var elementProperties = document.createElement('div');
+elementProperties.style.width = '100%';
+elementProperties.style.height = '100%';
+elementProperties.style.display = 'flex';
+elementProperties.style.flexDirection = 'column';
+elementProperties.style.justifyContent = 'center';
+elementProperties.style.alignItems = 'center';
+document.body.appendChild(elementProperties);
+
+elementProperties.style.border = '1px solid #f00';
+elementProperties.style.boxShadow = '0 0 10px #f00';
+
+elementProperties.style.display = 'flex';
+elementProperties.style.flexDirection = 'column';
+elementProperties.style.justifyContent = 'center';
+elementProperties.style.alignItems = 'center';
+
+elementProperties.style.width = '60%';
+
+elementProperties.style.width = '40%';
+
+elementProperties.style.width = '60%';
+searchBar.style.width = '60%';
+
+elementProperties.style.width = '200px';
+elementProperties.style.height = '200px';
+
+elementProperties.style.position = 'fixed';
+elementProperties.style.top = '50%';
+elementProperties.style.left = '50%';
+elementProperties.style.transform = 'translate(-50%, -50%)';
+
+searchBar.style.position = 'fixed';
+searchBar.style.top = '10%';
+searchBar.style.left = '50%';
+searchBar.style.transform = 'translate(-50%, -50%)';
+
+searchBar.style.width = '200px';
+
+searchBar.style.width = '250px';
+
+elementProperties.style.color = '#fff';
+
+searchBar.addEventListener('input', function() {
+  elementProperties.innerHTML = '';
+  for (var i = 0; i < periodicTable.length; i++) {
+    if (periodicTable[i].name.toLowerCase() === searchBar.value.toLowerCase()) {
+      var name = document.createElement('div');
+      name.innerHTML = 'Name: ' + periodicTable[i].name;
+      elementProperties.appendChild(name);
+      var symbol = document.createElement('div');
+      symbol.innerHTML = 'Symbol: ' + periodicTable[i].symbol;
+      elementProperties.appendChild(symbol);
+      var atomicNumber = document.createElement('div');
+      atomicNumber.innerHTML = 'Atomic Number: ' + periodicTable[i].atomicNumber;
+      elementProperties.appendChild(atomicNumber);
+      var atomicMass = document.createElement('div');
+      atomicMass.innerHTML = 'Atomic Mass: ' + periodicTable[i].atomicMass;
+      elementProperties.appendChild(atomicMass);
+      var group = document.createElement('div');
+      group.innerHTML = 'Group: ' + periodicTable[i].group;
+      elementProperties.appendChild(group);
+      var period = document.createElement('div');
+      period.innerHTML = 'Period: ' + periodicTable[i].period;
+      elementProperties.appendChild(period);
+      var block = document.createElement('div');
+      block.innerHTML = 'Block: ' + periodicTable[i].block;
+      elementProperties.appendChild(block);
+      var state = document.createElement('div');
+      state.innerHTML = 'State: ' + periodicTable[i].state;
+      elementProperties.appendChild(state);
+    }
+  }
+});
+
+elementProperties.style.textShadow = '0 0 10px #f00';
+
+elementProperties.style.border = '3px solid #f00';
+
+elementProperties.style.borderRadius = '3px';
+
+searchBar.addEventListener('input', function() {
+  var found = false;
+  for (var i = 0; i < periodicTable.length; i++) {
+    if (periodicTable[i].name.toLowerCase() === searchBar.value.toLowerCase()) {
+      found = true;
+    }
+  }
+  if (found) {
+    elementProperties.style.border = '3px solid #f00';
+  } else {
+    elementProperties.style.border = '3px solid #fff';
+  }
+});
+});
+</script>
+</head>
 </html>
