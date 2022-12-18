@@ -1826,6 +1826,12 @@ searchBar.addEventListener('input', function() {
   document.body.appendChild(suggestionsList);
 });
 
+searchBar.addEventListener('input', function() {
+  if (searchBar.value === '') {
+    document.body.removeChild(document.getElementById('suggestions'));
+  }
+});
+
 var elementTemplate = {
   name: '',
   symbol: '',
