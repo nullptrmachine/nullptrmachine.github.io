@@ -35,7 +35,7 @@ searchBar.style.backgroundColor = '#000';
 searchBar.style.border = '1px solid #f00';
 searchBar.style.boxShadow = '0 0 10px #f00';
 
-const periodicTable = {
+var periodicTable = [
   1: { 
     name: 'Hydrogen', 
     symbol: 'H',
@@ -1806,7 +1806,7 @@ const periodicTable = {
     density: null,
     state: 'solid'
   }
-};
+];
 
 searchBar.addEventListener('input', function() {
   var suggestions = [];
@@ -1824,14 +1824,6 @@ searchBar.addEventListener('input', function() {
     suggestionsList.appendChild(suggestion);
   }
   document.body.appendChild(suggestionsList);
-});
-
-searchBar.addEventListener('input', function() {
-  if (searchBar.value === '') {
-    while (document.getElementById('suggestions').firstChild) {
-      document.getElementById('suggestions').removeChild(document.getElementById('suggestions').firstChild);
-    }
-  }
 });
 
 var elementTemplate = {
