@@ -1828,7 +1828,10 @@ searchBar.addEventListener('input', function() {
 
 searchBar.addEventListener('input', function() {
   if (searchBar.value === '') {
-    document.body.removeChild(document.getElementById('suggestions'));
+    var datalists = document.getElementsByTagName('datalist');
+    for (var i = 0; i < datalists.length; i++) {
+      document.body.removeChild(datalists[i]);
+    }
   }
 });
 
