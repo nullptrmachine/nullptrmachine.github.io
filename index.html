@@ -35,7 +35,7 @@ searchBar.style.backgroundColor = '#000';
 searchBar.style.border = '1px solid #f00';
 searchBar.style.boxShadow = '0 0 10px #f00';
 
-const periodicTable = {
+const periodicTableList = {
   1: { 
     name: 'Hydrogen', 
     symbol: 'H',
@@ -1807,6 +1807,9 @@ const periodicTable = {
     state: 'solid'
   }
 }
+
+const periodicTableArray = Object.values(periodicTableList);
+var periodicTable = periodicTableArray;
 
 searchBar.addEventListener('input', function() {
   var suggestions = [];
