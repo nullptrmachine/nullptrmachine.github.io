@@ -1830,8 +1830,6 @@ searchBar.addEventListener('input', function() {
     }
   }
   searchBar.setAttribute('list', 'suggestions');
-  removeAllChildNodes(suggestionList);
-  suggestion.value = null;
   for (var i = 0; i < suggestions.length; i++) {
     suggestion.value = suggestions[i];
     suggestionsList.appendChild(suggestion);
