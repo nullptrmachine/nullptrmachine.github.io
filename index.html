@@ -1819,6 +1819,7 @@ function removeAllChildNodes(parent) {
     
 var suggestionsList = document.createElement('datalist');
 suggestionsList.id = 'suggestions';
+document.body.appendChild(suggestionsList);
 var suggestion = document.createElement('option');
 
 
@@ -1829,12 +1830,12 @@ searchBar.addEventListener('input', function() {
       suggestions.push(periodicTable[i].name);
     }
   }
+  removeAllChildNodes(suggestionsList);
   searchBar.setAttribute('list', 'suggestions');
   for (var i = 0; i < suggestions.length; i++) {
     suggestion.value = suggestions[i];
     suggestionsList.appendChild(suggestion);
   }
-  document.body.appendChild(suggestionsList);
 });
 
 var elementTemplate = {
