@@ -1810,6 +1810,17 @@ const periodicTableList = {
 
 const periodicTableArray = Object.values(periodicTableList);
 var periodicTable = periodicTableArray;
+    
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+    
+var suggestionsList = document.createElement('datalist');
+suggestionsList.id = 'suggestions';
+var suggestion = document.createElement('option');
+
 
 searchBar.addEventListener('input', function() {
   var suggestions = [];
@@ -1819,10 +1830,9 @@ searchBar.addEventListener('input', function() {
     }
   }
   searchBar.setAttribute('list', 'suggestions');
-  var suggestionsList = document.createElement('datalist');
-  suggestionsList.id = 'suggestions';
+  removeAllChildNodes(suggestionList);
+  suggestion.value = null;
   for (var i = 0; i < suggestions.length; i++) {
-    var suggestion = document.createElement('option');
     suggestion.value = suggestions[i];
     suggestionsList.appendChild(suggestion);
   }
@@ -1935,6 +1945,10 @@ elementProperties.style.border = '3px solid #f00';
 elementProperties.style.borderRadius = '3px';
 
 searchBar.addEventListener('input', function() {
+  if (searchBar.value === null) {
+      removeAllChildNodes(suggestionList);
+      suggestion.value = null;
+  }
   var found = false;
   for (var i = 0; i < periodicTable.length; i++) {
     if (periodicTable[i].name.toLowerCase() === searchBar.value.toLowerCase()) {
